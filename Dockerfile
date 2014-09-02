@@ -2,7 +2,9 @@ FROM martinheidegger/nodejs_build_server
 MAINTAINER "Martin Heidegger" <martin.heidegger@gmail.com>
 
 # Install the latest strider version
-RUN npm install -g git+https://github.com/Strider-CD/strider.git#master
+RUN npm install -g git+https://github.com/martinheidegger/strider.git#master
+
+RUN apt-get install dialog
 
 # copy the supervisor config and the strider start script used by it
 RUN cp "$(npm root -g)/strider/docker/supervisord.conf" /etc/supervisor/conf.d/supervisord.conf
@@ -13,7 +15,8 @@ RUN useradd -m strider
 
 # change the root and strider password so we can login via ssh
 # Root access is prohibited by default through ssh. To get root access login as strider and su to root.
-RUN echo 'strider:str!der\nroot:str!der' | chpasswd
+RUN echo 'strider:str!der' | chpasswd
+RUN echo 'root:str!der' | chpasswd
 
 # create some directories for the database, ssh, and supervisor logs
 RUN mkdir -p /data/db && chown -R strider /data
