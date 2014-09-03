@@ -1,5 +1,5 @@
 FROM martinheidegger/nodejs_build_server
-MAINTAINER "Martin Heidegger" <martin.heidegger@gmail.com>
+MAINTAINER "Martin Heidegger" <mh@ikkyotech.com>
 
 # Install the latest strider version
 RUN npm install -g git+https://github.com/Strider-CD/strider.git#master
