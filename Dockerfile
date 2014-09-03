@@ -1,4 +1,4 @@
-FROM martinheidegger/nodejs_build_server
+FROM ikkyotech/nodejs_build_server
 MAINTAINER "Martin Heidegger" <mh@ikkyotech.com>
 
 # Install the latest strider version
